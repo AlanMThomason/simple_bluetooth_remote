@@ -3,7 +3,13 @@ HC05 - Bluetooth AT-Command mode
 modified on 10 Feb 2019 
 by Saeed Hosseini 
 https://electropeak.com/learn/ 
+
+modified for controlling student robots 
+Alan Thomason @ Stepping Stone school
+20210516
+
 */ 
+
 /*
  * When paired, two fast blinks followed by about 1sec gap seems to indicate 'working'
  */
@@ -12,7 +18,7 @@ https://electropeak.com/learn/
 
  /*
   * 
-  * To be paired with c:\Alan\Arduino\PC_Comms_20210429T2019
+  * To be paired with a PC based python program (robot_comms.py)
   * BT is HC05
   * BT Pin 2   5V
   * BT Pin 3 GND
@@ -24,14 +30,17 @@ https://electropeak.com/learn/
 #include <SoftwareSerial.h> 
 #include <Servo.h> // Include servo library
 
+#define STOPPED_SERVO_LEFT 1470
+#define STOPPED_SERVO_RIGHT 1470
+
 Servo servoRight; // Declare right servo
 Servo servoLeft; // Declare left servo
 
 SoftwareSerial MyBlue(2, 3); // RX | TX 
 int flag = 0; 
 int LED = 8; 
-int speed_left = 1500;
-int speed_right = 1500;
+int speed_left = STOPPED_SERVO_LEFT;
+int speed_right = STOPPED_SERVO_RIGHT;
 void setup() 
 {
   servoLeft.attach(10); // Attach left signal to pin 10
@@ -74,8 +83,8 @@ void loop()
  }  
   else if (flag == 32)
  {
-    speed_left = 1460;
-    speed_right = 1480;
+    speed_left = STOPPED_SERVO_LEFT;
+    speed_right = STOPPED_SERVO_RIGHT;
  }  
 if (flag > 0)
 {

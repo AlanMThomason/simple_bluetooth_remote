@@ -42,7 +42,7 @@ import serial #Note that if you don't have this, you must pip install PySerial, 
 
 
 print("Stepping Stone remote robot control.")
-print("The light on the HC-05 bluetooth receiver on the robot should be blinking at ~4Hz")
+print("Before running this progThe light on the HC-05 bluetooth receiver on the robot should be blinking at ~4Hz")
 print("  or 4 times per second")
 print("Next step is to attempt to connect through internal bluetooth device")
 print("If that is successful, the light sequence will change to 2fast flashes followed by ")
@@ -63,13 +63,23 @@ ser.timeout = 3 #set timeout for serial communications
 while True:
     if msvcrt.kbhit():
         key_stroke = msvcrt.getch()
-        print("key pressed = ", key_stroke)
+
         if key_stroke == b'Q' or key_stroke == b'q' :
             print("User requested break to sequence")
             break
-        ser.write(key_stroke)
+            
+        #Every time the keyboard is pressed, b'\xe0' is reported
+        # with every key press.  Sending this over the serial stream
+        #  causes a hesitation in control, probably since there is no 
+        #  associated action but it is received by the arduino
+        #  and the ardunio program could then miss the desired action
+      
+        if key_stroke != b'\xe0' :
+            print("key pressed = ", key_stroke)
+            ser.write(key_stroke)
 
 
+    
     time.sleep(0.01)
 
 
