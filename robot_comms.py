@@ -32,6 +32,10 @@ import sys
 # For different COM ports than the deafult just start this program with the
 #  port as the argument.  For instance, 
 #    python robot_comms.py 37
+#  One frustrating note is that my windows application opens two ports for bluetooth
+#    The first one causes the program to hang, not sure why.  So I have to set the
+#     second one.
+#
 #
 #  There is almost nothing here, but it will feel so cool to control your robot
 #   with the keyboard.  The C program that I have in the Arduino listens for the 
