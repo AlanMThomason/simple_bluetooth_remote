@@ -356,10 +356,20 @@
                                     </value>
                                     <next>
                                       <block type="servo_detach" id="0(LbB2EeK[kWr4[~5V_z">
-                                        <field name="SERVO_PIN">0</field>
+                                        <field name="SERVO_PIN">10</field>
                                         <next>
                                           <block type="servo_detach" id="oZr:VnlMxlcm+=rcRABG">
-                                            <field name="SERVO_PIN">0</field>
+                                            <field name="SERVO_PIN">11</field>
+                                            <next>
+                                              <block type="variables_set" id="(H^e0]lZF()P)!sqIn3^">
+                                                <field name="VAR">flag</field>
+                                                <value name="VALUE">
+                                                  <block type="math_number" id="%s.0}4,qFC%cQMr*xe{?">
+                                                    <field name="NUM">0</field>
+                                                  </block>
+                                                </value>
+                                              </block>
+                                            </next>
                                           </block>
                                         </next>
                                       </block>
@@ -393,33 +403,38 @@
                                         <field name="NUM">0</field>
                                       </block>
                                     </value>
-                                  </block>
-                                </statement>
-                                <next>
-                                  <block type="servo_attach" id="9D+,Qc1UXVm~cu?TW-9j">
-                                    <field name="SERVO_PIN">10</field>
                                     <next>
-                                      <block type="servo_write_usec" id="Jy}u3I{!!~d_ga+I}Q~e">
+                                      <block type="servo_attach" id="9D+,Qc1UXVm~cu?TW-9j">
                                         <field name="SERVO_PIN">10</field>
-                                        <value name="NUM">
-                                          <block type="variables_get" id="TwMV`ma+UzN+hV6GDgWJ">
-                                            <field name="VAR">speed_left</field>
-                                          </block>
-                                        </value>
                                         <next>
-                                          <block type="servo_write_usec" id="/UZ?ltt2k(kc1b:]@`Lm">
+                                          <block type="servo_attach" id="b@FIG/s0B@cr(3ch6LzA">
                                             <field name="SERVO_PIN">11</field>
-                                            <value name="NUM">
-                                              <block type="variables_get" id="creKoV3@5I+d~*3{OR:J">
-                                                <field name="VAR">speed_right</field>
+                                            <next>
+                                              <block type="servo_write_usec" id="Jy}u3I{!!~d_ga+I}Q~e">
+                                                <field name="SERVO_PIN">10</field>
+                                                <value name="NUM">
+                                                  <block type="variables_get" id="TwMV`ma+UzN+hV6GDgWJ">
+                                                    <field name="VAR">speed_left</field>
+                                                  </block>
+                                                </value>
+                                                <next>
+                                                  <block type="servo_write_usec" id="/UZ?ltt2k(kc1b:]@`Lm">
+                                                    <field name="SERVO_PIN">11</field>
+                                                    <value name="NUM">
+                                                      <block type="variables_get" id="creKoV3@5I+d~*3{OR:J">
+                                                        <field name="VAR">speed_right</field>
+                                                      </block>
+                                                    </value>
+                                                  </block>
+                                                </next>
                                               </block>
-                                            </value>
+                                            </next>
                                           </block>
                                         </next>
                                       </block>
                                     </next>
                                   </block>
-                                </next>
+                                </statement>
                               </block>
                             </next>
                           </block>
